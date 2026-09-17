@@ -94,7 +94,11 @@ dramatic shadows, photorealistic, highly detailed
 # 다음에 시도할 프롬프트 (작성 칸)
 
 여기서부터는 **직접 채우는 칸**입니다. 노트북 "내 프롬프트로 직접 해보기" 셀의
-`MY_PROMPTS`에 그대로 복사해 넣으면 바로 돌아갑니다.
+`MY_PROMPTS_KO`에 그대로 복사해 넣으면 바로 돌아갑니다.
+
+**한국어로 적어도 됩니다.** 노트북의 `to_en()`이 기기 안에서 영어로 번역해
+넘기고, 번역된 문장을 화면에 함께 출력합니다. 번역이 어색하면 그 영어 문장을
+아래 "번역 결과" 칸에 옮겨 적고 손으로 고쳐 쓰세요.
 
 ## 작성 칸 A
 
@@ -105,6 +109,7 @@ dramatic shadows, photorealistic, highly detailed
 (여기에 프롬프트를 적으세요)
 ```
 
+- 번역 결과 (한국어로 썼다면 출력된 영어를 옮겨 적기): [ ]
 - 네거티브 추가분: [ 기본 NEGATIVE 외에 더 넣을 것이 있으면 ]
 - 파라미터: steps [ ] / guidance [ ] / pose_scale [ ] / seed [ ]
 - 결과: [ 잘 됨 / 어긋남 — 어떻게 ]
@@ -118,6 +123,7 @@ dramatic shadows, photorealistic, highly detailed
 (여기에 프롬프트를 적으세요)
 ```
 
+- 번역 결과 (한국어로 썼다면 출력된 영어를 옮겨 적기): [ ]
 - 네거티브 추가분: [ ]
 - 파라미터: steps [ ] / guidance [ ] / pose_scale [ ] / seed [ ]
 - 결과: [ ]
@@ -131,6 +137,7 @@ dramatic shadows, photorealistic, highly detailed
 (여기에 프롬프트를 적으세요)
 ```
 
+- 번역 결과 (한국어로 썼다면 출력된 영어를 옮겨 적기): [ ]
 - 네거티브 추가분: [ ]
 - 파라미터: steps [ ] / guidance [ ] / pose_scale [ ] / seed [ ]
 - 결과: [ ]
