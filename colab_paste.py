@@ -250,3 +250,54 @@ print("저장:", sorted(os.listdir("out")))
 # 내려받기가 필요하면 아래 두 줄의 주석을 푸세요.
 # from google.colab import files
 # for k in results: files.download(f"out/{k}.png")
+
+
+# =============================================================================
+#  [셀 4] 결과 옮기기 — Colab은 런타임이 끊기면 /content의 파일이 사라집니다.
+#          만든 직후 아래 중 하나로 빼내세요.
+# =============================================================================
+
+# ----- 방법 1. zip으로 묶어 내려받기 (가장 간단) -----------------------------
+# 받은 zip을 풀어 저장소의 samples/ 에 넣으면 됩니다.
+!zip -qr out.zip out
+from google.colab import files
+files.download("out.zip")
+
+
+# ----- 방법 2. Google Drive에 저장 (런타임이 죽어도 남음) ---------------------
+# 이 블록만 따로 실행하세요. PC에 Drive 앱이 있으면 자동 동기화까지 됩니다.
+#
+# from google.colab import drive
+# drive.mount('/content/drive')
+#
+# SAVE = '/content/drive/MyDrive/pose-image-tool'
+# os.makedirs(SAVE, exist_ok=True)
+# for k, img in results.items():
+#     img.save(f"{SAVE}/{k}.png")
+# MY_POSE.save(f"{SAVE}/pose_used.png")
+# print("Drive 저장 완료:", sorted(os.listdir(SAVE)))
+
+
+# ----- 방법 3. GitHub로 바로 푸시 (다운로드·업로드 없이 이어서 작업) ---------
+# GitHub Personal Access Token이 필요합니다.
+#   github.com -> Settings -> Developer settings -> Personal access tokens
+#   권한은 repo 하나면 됩니다.
+# 주의: 실행한 뒤 그 셀의 출력을 지우세요. 토큰을 노트북에 직접 적지 마세요.
+#
+# from getpass import getpass
+# TOKEN = getpass("GitHub Personal Access Token: ")   # 화면에 표시되지 않음
+#
+# !git clone -q https://x-access-token:{TOKEN}@github.com/Benji5526/pose-image-tool.git /content/repo
+# !cp out/*.png /content/repo/samples/
+# os.chdir('/content/repo')
+# !git -c user.name="Benji5526" -c user.email="byjun.min@gmail.com" \
+#      commit -aqm "Colab에서 생성한 결과 추가" && git push -q
+# print("푸시 완료")
+# os.chdir('/content')
+
+
+# ----- 방법 4. 노트북 자체의 수정을 남기기 -----------------------------------
+# 셀 내용을 Colab에서 고쳤다면 파일도 따로 저장해야 합니다. 메뉴에서:
+#   파일 -> 드라이브에 사본 저장      (내 Drive에 보관)
+#   파일 -> GitHub에 사본 저장        (저장소에 바로 커밋, 계정 연동 필요)
+# 개별 파일만 받으려면 왼쪽 폴더 아이콘 -> 파일 우클릭 -> 다운로드.
