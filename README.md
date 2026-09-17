@@ -1,6 +1,7 @@
 # 원하는 포즈로 이미지 만드는 도구
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Benji5526/pose-image-tool/blob/main/pose_tool.ipynb)
+**과제 튜토리얼** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Benji5526/pose-image-tool/blob/main/pose_tool.ipynb)
+   **이어서 작업하기** [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Benji5526/pose-image-tool/blob/main/colab_work.ipynb)
 
 ## 도구 설명
 - 참조 사진에서 사람의 자세(골격)만 뽑아내고, 그 자세를 그대로 유지한 채 원하는 인물·스타일로 새 이미지를 만듭니다.
@@ -11,6 +12,21 @@
 2. 위에서부터 0~7단계 셀을 순서대로 실행합니다. 0 런타임 확인 → 1 설치(2~3분) → 2 참조 사진 업로드 → 3 골격 추출 → 4 모델 로드(첫 실행 시 4GB 다운로드) → 5 한 장 생성 → 6 조건 바꿔 비교(실험 1·2·3) → 7 저장. 실험 3에서 두 번째 참조 사진을 한 번 더 올립니다. 준비물은 전신이 나온 사진 2장이며, `samples/images1.jpg`와 `samples/images2.jpg`를 그대로 써도 됩니다.
 3. 결과는 Colab 작업 폴더의 `samples/`에 `pose_01.png`(골격)·`output_01.png`(결과) 형태로 저장되고, 마지막 셀을 실행하면 `samples.zip`으로 내려받아집니다. 압축을 풀어 이 저장소의 `samples/`에 덮어쓰면 됩니다.
 4. 직접 만든 프롬프트로 더 시도해 보려면 6-4단계 셀의 `MY_PROMPTS_KO`를 고쳐 실행하세요. **한국어로 써도 됩니다** — `to_en()`이 영어로 번역해 넘기고, 번역 결과를 화면에 함께 출력합니다. 쓸 만한 조합은 [`prompts.md`](prompts.md)의 "다음에 시도할 프롬프트 (작성 칸)"에 적어 두면 됩니다.
+
+### Colab에서 이어서 작업하기
+
+`colab_work.ipynb`는 **링크만 열고 모두 실행**하면 되는 작업용 노트북입니다.
+업로드 창도, 코드 붙여넣기도 없습니다.
+
+- 셀 2가 이 저장소를 Colab 안으로 복제합니다. `samples/`의 골격을 그대로 읽어
+  쓰므로 참조 사진을 올릴 필요가 없습니다.
+- 두 번째 실행부터는 `git pull`로 최신 상태를 맞춰, 지난번에 push한 결과가
+  그대로 이어집니다.
+- 셀 4의 프롬프트만 고쳐 반복 실행하면 됩니다. 한국어로 써도 됩니다.
+- 셀 6에서 저장소로 바로 push하거나 zip으로 내려받습니다.
+
+`pose_tool.ipynb`(과제 튜토리얼)는 과정을 한 셀씩 설명하는 쪽이고, 이 노트북은
+반복 작업용입니다. 둘 다 같은 코드를 씁니다.
 
 ### 노트북 대신 붙여넣기로 쓰기
 
@@ -61,6 +77,7 @@ pose-image-tool/
 ├── README.md          # 이 파일 — 도구 설명, 사용법, 테스트 결과, 한계
 ├── pose_tool.ipynb    # Colab 튜토리얼 노트 (핵심, 34셀)
 ├── prompts.md         # 테스트에 쓴 프롬프트 모음
+├── colab_work.ipynb   # Colab 작업용 — 링크 열고 모두 실행, 저장소 복제 후 push까지
 ├── colab_paste.py     # Colab 셀에 붙여넣어 쓰는 단축 버전 (업로드 창 없음)
 └── samples/
     ├── images1.jpg        # 참조 사진 1 (정면 직립)
