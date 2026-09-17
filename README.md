@@ -10,11 +10,24 @@
 1. `pose_tool.ipynb`를 클릭해 열고, [colab.research.google.com](https://colab.research.google.com) → 파일 → GitHub 탭에 이 저장소 주소를 넣어 실행합니다. 열린 뒤 **런타임 → 런타임 유형 변경 → T4 GPU**를 선택합니다.
 2. 위에서부터 0~7단계 셀을 순서대로 실행합니다. 0 런타임 확인 → 1 설치(2~3분) → 2 참조 사진 업로드 → 3 골격 추출 → 4 모델 로드(첫 실행 시 4GB 다운로드) → 5 한 장 생성 → 6 조건 바꿔 비교(실험 1·2·3) → 7 저장. 실험 3에서 두 번째 참조 사진을 한 번 더 올립니다. 준비물은 전신이 나온 사진 2장이며, `samples/images1.jpg`와 `samples/images2.jpg`를 그대로 써도 됩니다.
 3. 결과는 Colab 작업 폴더의 `samples/`에 `pose_01.png`(골격)·`output_01.png`(결과) 형태로 저장되고, 마지막 셀을 실행하면 `samples.zip`으로 내려받아집니다. 압축을 풀어 이 저장소의 `samples/`에 덮어쓰면 됩니다.
+4. 직접 만든 프롬프트로 더 시도해 보려면 6-4단계 셀의 `MY_PROMPTS`를 고쳐 실행하세요. 쓸 만한 조합은 [`prompts.md`](prompts.md)의 "다음에 시도할 프롬프트 (작성 칸)"에 적어 두면 됩니다.
 
 ## 테스트 결과
 - 포즈 1: 정면 직립, 양팔을 몸 옆에 내리고 한 손만 바지 주머니에 넣은 자세 (`samples/images1.jpg` → `samples/pose_01.png`) → 프롬프트: `a young man in a white linen shirt standing in a sunflower field, golden hour` → 결과: 골격 추출 잘 됨 (몸통·얼굴·양손 키포인트 모두 검출, 골격 픽셀 4.29%) / 생성 결과는 Colab 실행 후 기입
 - 포즈 2: 다리를 X자로 꼬고 서서 양손을 주머니에 넣은 자세 (`samples/images2.jpg` → `samples/pose_02.png`) → 프롬프트: 포즈 1과 **동일** (프롬프트를 고정해 포즈만 바꾼 비교) → 결과: 골격 추출 잘 됨 (꼰 다리의 교차 지점까지 정확히 따라감, 골격 픽셀 4.42%) / 생성 결과는 Colab 실행 후 기입
 - 노트북에는 조건을 하나씩만 바꾸는 실험 세 개가 들어 있습니다. 실험 1은 같은 포즈에 프롬프트 4종(sunflower field / knight / astronaut / anime), 실험 2는 같은 프롬프트에 `pose_scale` 0.5·1.0·1.5, 실험 3은 같은 프롬프트에 포즈 사진만 교체입니다. 관찰 내용은 노트북 마지막 마크다운 셀(9단계)에 기록합니다.
+
+### 결과 미리보기
+
+| 참조 사진 | 추출된 골격 (ControlNet 입력) | 생성 결과 |
+|:---:|:---:|:---:|
+| <img src="samples/images1.jpg" width="210"> | <img src="samples/pose_01.png" width="210"> | <img src="samples/output_01.png" width="210"> |
+| **포즈 1** · 정면 직립, 한 손 주머니 | 골격 픽셀 4.29% · 검출 성공 | ⚠️ 자리채움 — Colab 실행 후 교체 |
+| <img src="samples/images2.jpg" width="210"> | <img src="samples/pose_02.png" width="210"> | <img src="samples/output_02.png" width="210"> |
+| **포즈 2** · 다리 X자로 꼬고 양손 주머니 | 골격 픽셀 4.42% · 검출 성공 | ⚠️ 자리채움 — Colab 실행 후 교체 |
+
+오른쪽 열의 두 장은 아직 생성 이미지가 아닙니다. 노트북 4~7단계를 실행하면
+같은 파일명으로 실제 결과가 저장됩니다.
 
 ## 한계
 - 손가락이 자주 깨집니다. 손 키포인트는 한 손에 21개뿐이라 정보가 부족해서이고, `steps`를 25 → 35로 올리면 나아집니다.
@@ -32,7 +45,7 @@
 ```
 pose-image-tool/
 ├── README.md          # 이 파일 — 도구 설명, 사용법, 테스트 결과, 한계
-├── pose_tool.ipynb    # Colab 튜토리얼 노트 (핵심, 29셀)
+├── pose_tool.ipynb    # Colab 튜토리얼 노트 (핵심, 32셀)
 ├── prompts.md         # 테스트에 쓴 프롬프트 모음
 └── samples/
     ├── images1.jpg        # 참조 사진 1 (정면 직립)
@@ -45,7 +58,7 @@ pose-image-tool/
 
 ## 작업 기록
 
-### 노트북 구성 (29셀 = 코드 16 + 마크다운 13)
+### 노트북 구성 (32셀 = 코드 18 + 마크다운 14)
 
 | 단계 | 내용 |
 |---|---|
@@ -56,6 +69,7 @@ pose-image-tool/
 | 4 | ControlNet(OpenPose) + SD 1.5 파이프라인 로드 |
 | 5 | `generate()` 정의 후 한 장 생성 |
 | 6 | 실험 1 같은 포즈·프롬프트 4종 / 실험 2 `pose_scale` 3종 / 실험 3 같은 프롬프트·포즈 교체 |
+| 6-4 | **내 프롬프트로 직접 해보기** — `MY_PROMPTS`에 문장을 채워 바로 실행하는 칸 |
 | 7 | `samples/` 규칙대로 저장 후 `samples.zip` 다운로드 |
 | 8 | 자주 막히는 지점 표 |
 | 9 | 관찰 기록 (무엇을 바꿨고 어떻게 달라졌는가) |

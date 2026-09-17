@@ -88,3 +88,71 @@ dramatic shadows, photorealistic, highly detailed
 - 손이 깨질 때는 프롬프트보다 `steps`를 올리는 게 효과가 크다 (25 → 35).
 - 주머니에 손을 넣은 자세는 손 키포인트가 몸에 가려 일부만 잡힌다. 그 부분은 프롬프트로 보완해야 한다 (`hands in pockets`).
 - 얼굴 방향이 어긋날 때는 OpenPose 추출 시 `include_face=True`가 켜져 있는지 확인.
+
+---
+
+# 다음에 시도할 프롬프트 (작성 칸)
+
+여기서부터는 **직접 채우는 칸**입니다. 노트북 "내 프롬프트로 직접 해보기" 셀의
+`MY_PROMPTS`에 그대로 복사해 넣으면 바로 돌아갑니다.
+
+## 작성 칸 A
+
+목표: [무엇을 만들어 보고 싶은지 한 줄]
+참조 포즈: [ images1 / images2 / 새 사진 ]
+
+```
+(여기에 프롬프트를 적으세요)
+```
+
+- 네거티브 추가분: [ 기본 NEGATIVE 외에 더 넣을 것이 있으면 ]
+- 파라미터: steps [ ] / guidance [ ] / pose_scale [ ] / seed [ ]
+- 결과: [ 잘 됨 / 어긋남 — 어떻게 ]
+
+## 작성 칸 B
+
+목표: [ ]
+참조 포즈: [ ]
+
+```
+(여기에 프롬프트를 적으세요)
+```
+
+- 네거티브 추가분: [ ]
+- 파라미터: steps [ ] / guidance [ ] / pose_scale [ ] / seed [ ]
+- 결과: [ ]
+
+## 작성 칸 C
+
+목표: [ ]
+참조 포즈: [ ]
+
+```
+(여기에 프롬프트를 적으세요)
+```
+
+- 네거티브 추가분: [ ]
+- 파라미터: steps [ ] / guidance [ ] / pose_scale [ ] / seed [ ]
+- 결과: [ ]
+
+## 시도 기록 표
+
+한 줄씩 덧붙여 가며 기록하세요.
+
+| # | 프롬프트 요약 | 포즈 | pose_scale | seed | 결과 한 줄 |
+|---|---|---|---|---|---|
+| 1 | | | | | |
+| 2 | | | | | |
+| 3 | | | | | |
+| 4 | | | | | |
+
+## 프롬프트를 지을 때 쓸 조각들
+
+붙여 쓰기 좋은 표현을 모아 둡니다. 필요한 것만 골라 이어 붙이면 됩니다.
+
+- **인물**: `a young man`, `a young woman`, `an elderly fisherman`, `a knight`, `an astronaut`, `a ballet dancer`
+- **옷**: `in a white linen shirt`, `in polished steel armor`, `in a heavy winter coat`, `in a business suit`
+- **장소**: `in a sunflower field`, `in a castle courtyard`, `on a rainy neon street`, `in an empty art gallery`
+- **빛**: `golden hour`, `soft rim light`, `dramatic overcast light`, `single spotlight`, `backlit silhouette`
+- **화풍**: `85mm photo, shallow depth of field`, `oil painting, visible brush strokes`, `anime illustration, cel shading`, `3d render, octane`
+- **품질**: `highly detailed`, `photorealistic`, `cinematic`, `museum quality`
