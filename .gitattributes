@@ -1,0 +1,9 @@
+# 텍스트 파일 줄바꿈 정규화
+* text=auto eol=lf
+
+# 노트북은 diff 노이즈가 크므로 병합 시 수동 처리
+*.ipynb text eol=lf merge=binary
+
+# 이미지는 바이너리
+*.png binary
+*.jpg binary

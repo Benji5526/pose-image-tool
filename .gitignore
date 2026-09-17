@@ -1,0 +1,8 @@
+# Colab / 로컬 실행 중 생기는 것
+samples.zip
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# OMC 운영 아티팩트
+.omc/
