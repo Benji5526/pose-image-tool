@@ -19,6 +19,10 @@
 
 ### 결과 미리보기
 
+<img src="samples/preview.png" width="900">
+
+위는 여섯 칸을 한 장으로 합친 대조표입니다. 개별 파일은 아래 표에서 볼 수 있습니다.
+
 | 참조 사진 | 추출된 골격 (ControlNet 입력) | 생성 결과 |
 |:---:|:---:|:---:|
 | <img src="samples/images1.jpg" width="210"> | <img src="samples/pose_01.png" width="210"> | <img src="samples/output_01.png" width="210"> |
@@ -45,7 +49,7 @@
 ```
 pose-image-tool/
 ├── README.md          # 이 파일 — 도구 설명, 사용법, 테스트 결과, 한계
-├── pose_tool.ipynb    # Colab 튜토리얼 노트 (핵심, 32셀)
+├── pose_tool.ipynb    # Colab 튜토리얼 노트 (핵심, 34셀)
 ├── prompts.md         # 테스트에 쓴 프롬프트 모음
 └── samples/
     ├── images1.jpg        # 참조 사진 1 (정면 직립)
@@ -53,12 +57,13 @@ pose-image-tool/
     ├── output_01.png      # 같은 자세로 만든 결과
     ├── images2.jpg        # 참조 사진 2 (다리 꼰 자세)
     ├── pose_02.png        # images2에서 뽑은 골격
-    └── output_02.png      # 같은 자세로 만든 결과
+    ├── output_02.png      # 같은 자세로 만든 결과
+    └── preview.png        # 위 6장을 한 장으로 합친 대조표 (편집기에서 바로 보기용)
 ```
 
 ## 작업 기록
 
-### 노트북 구성 (32셀 = 코드 18 + 마크다운 14)
+### 노트북 구성 (34셀 = 코드 18 + 마크다운 16)
 
 | 단계 | 내용 |
 |---|---|
