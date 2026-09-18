@@ -1,10 +1,12 @@
 # 원하는 포즈로 이미지 만드는 도구
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Benji5526/pose-image-tool/blob/main/pose_tool.ipynb)
+
 ## 도구 설명
 - 참조 사진에서 사람의 자세(골격)만 뽑아내고, 그 자세를 그대로 유지한 채 원하는 인물·스타일로 새 이미지를 만듭니다. OpenPose로 골격을 추출해 ControlNet 조건으로 넣고 Stable Diffusion 1.5로 생성하며, API 키 없이 무료 Colab GPU에서 동작합니다.
 
 ## 사용법
-1. `pose_tool.ipynb`를 열고 (colab.research.google.com → 파일 → GitHub 탭에 이 저장소 주소 입력), 런타임 → 런타임 유형 변경 → T4 GPU로 설정합니다.
+1. 위의 **Open In Colab** 배지를 클릭해 `pose_tool.ipynb`를 바로 엽니다. 런타임 → 런타임 유형 변경 → T4 GPU로 설정합니다.
 2. 0~7단계 셀을 위에서부터 순서대로 실행합니다: 설치 → 참조 사진 업로드 → 골격 추출 → 모델 로드 → 한 장 생성 → 조건 바꿔 비교 → 저장. (직접 프롬프트로 시도하려면 6-4단계 셀을 씁니다.)
 3. 결과는 `samples/`에 `pose_01.png`(골격)·`output_01.png`(결과) 형태로 저장되고, 마지막 셀을 실행하면 `samples.zip`으로 내려받아집니다.
 
